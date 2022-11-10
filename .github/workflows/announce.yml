@@ -16,4 +16,5 @@ jobs:
         CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
     steps:
       - name: announce
+        working-directory: /app
         run: node index.js
