@@ -2,9 +2,9 @@ name: announce
 
 on:
   schedule:
-    - cron:  '0 15 * * *'
+    - cron: "0 15 * * *"
   workflow_dispatch:
-    
+
 jobs:
   docker:
     runs-on: ubuntu-latest
