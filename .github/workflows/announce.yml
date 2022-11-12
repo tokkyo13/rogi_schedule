@@ -1,0 +1,20 @@
+name: announce
+
+on:
+  schedule:
+    - cron:  '0 15 * * *'
+  workflow_dispatch:
+    
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    container:
+      image: tokkyo13/rogi_schedule:latest
+      env:
+        TOKEN: ${{ secrets.TOKEN }}
+        GUILD_ID: ${{ secrets.GUILD_ID }}
+        CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+    steps:
+      - name: announce
+        working-directory: /app
+        run: node index.js
