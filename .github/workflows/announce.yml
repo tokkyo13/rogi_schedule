@@ -2,7 +2,7 @@ name: announce
 
 on:
   schedule:
-    - cron: "0 15 * * *"
+    - cron: "30 14 * * *"
   workflow_dispatch:
 
 jobs:
@@ -15,6 +15,9 @@ jobs:
         GUILD_ID: ${{ secrets.GUILD_ID }}
         CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
     steps:
+      - name: wait
+        working-directory: /scripts
+        run: bash sleep.sh
       - name: announce
-        working-directory: /app
+        working-directory: /discordjs
         run: node index.js
